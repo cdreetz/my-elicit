@@ -22,7 +22,7 @@ const NotebookUI: React.FC = () => {
     <Flex bg="gray.50" h="100vh" overflow="hidden" alignItems="center" justifyContent="center">
       <Box mx="auto" mt={10} p={5} maxW="720px" w="full">
         {/* Editable Header */}
-        <Input placeholder="Add notebook title" size="lg" mb={8} textAlign="center" fontWeight="bold" variant="unstyled" />
+        <Input placeholder="Add notebook title" size="lg" mb={8} fontWeight="bold" variant="unstyled" />
         
         {/* Select a first step section */}
         <Text fontSize="md" mb={4}>Select a first step</Text>
