@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import { 
   Box, 
@@ -9,6 +10,7 @@ import {
   AccordionButton, 
   AccordionPanel, 
   AccordionIcon, 
+  useAccordionItemState,
   Button, 
   Divider, 
   Text, 
@@ -16,18 +18,34 @@ import {
   Textarea,
   Spacer
 } from "@chakra-ui/react";
+import Dropzone from '@/components/fileUpload';
+
+//const CustomAccordionItem: React.FC<{ title: string, children: React.ReactNode }> = ({ title, children }) => {
+//  const { isOpen } = useAccordionItemState();
+//
+//  return (
+//    <AccordionItem borderWidth="1px" borderColor="gray.200" borderRadius="md" boxShadow="md" bg={isOpen ? "white" : "gray.50"}>
+//      <AccordionButton>
+//        <Box flex="1" textAlign="left">{title}</Box>
+//      </AccordionButton>
+//      <AccordionPanel pb={4}>
+//        {children}
+//      </AccordionPanel>
+//    </AccordionItem>
+//  );
+//}
 
 const NotebookUI: React.FC = () => {
   return (
-    <Flex bg="gray.50" h="100vh" overflow="hidden" alignItems="center" justifyContent="center">
+    <Flex bg="#f0f0f0" h="100vh" overflow="hidden" justifyContent="center">
       <Box mx="auto" mt={10} p={5} maxW="720px" w="full">
         {/* Editable Header */}
-        <Input placeholder="Add notebook title" size="lg" mb={8} fontWeight="bold" variant="unstyled" />
+        <Input placeholder="Add notebook title" fontSize="2xl" mb={8} fontWeight="bold" variant="unstyled" />
         
         {/* Select a first step section */}
         <Text fontSize="md" mb={4}>Select a first step</Text>
         <Accordion borderWidth="1px" borderColor="gray.200" borderRadius="md" p={1}>
-          <AccordionItem borderWidth="1px" borderColor="gray.200" borderRadius="md" boxShadow="md">
+          <AccordionItem title="Find papers">
             <AccordionButton>
               <Box flex="1" textAlign="left">Find papers</Box>
             </AccordionButton>
@@ -40,21 +58,21 @@ const NotebookUI: React.FC = () => {
             </AccordionPanel>
           </AccordionItem>
 
-          <AccordionItem>
+          <AccordionItem title="Extract data from PDFs">
             <AccordionButton>
               <Box flex="1" textAlign="left">Extract data from PDFs</Box>
             </AccordionButton>
             <AccordionPanel pb={4}>
-              <Text>Content for asking a research question goes here.</Text>
+              <Dropzone onFileAccepted={(file: File) => { console.log(file); }} />
             </AccordionPanel>
           </AccordionItem>
 
-          <AccordionItem>
+          <AccordionItem title="List of concepts">
             <AccordionButton>
               <Box flex="1" textAlign="left">List of concepts</Box>
             </AccordionButton>
             <AccordionPanel pb={4}>
-              <Text>Content for list of concepts goes here.</Text>
+              <Text>What concepts are you looking for across papers? e.g. treatments for hair loss, scientific fact-checking datasets</Text>
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
